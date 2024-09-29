@@ -13,6 +13,7 @@ jobs:
           path: |
             build/main
             build/tests
+            build/my_benchmark
 
   tests:
     needs: build
@@ -30,4 +31,4 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: binaries
-      - run:  ./my_benchmark
+      - run: chmod +x my_benchmark && ./my_benchmark
