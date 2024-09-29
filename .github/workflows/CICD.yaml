@@ -30,4 +30,4 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: binaries
-      - run:  chmod +x my_benchmark && ./my_benchmark
+      - run:  ./build/my_benchmark
