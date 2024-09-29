@@ -1,0 +1,6 @@
+*.swp
+build
+CMakeFiles
+*.cmake
+CMakeCache.txt
+MakeFile
