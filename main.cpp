@@ -14,20 +14,15 @@ Task *generateTask(int n, Container<Task *> *con) {
     result = new BinaryOperation(op, unif(re), unif(re), "Name1");
     break;
   case 1:
-    result = new AddToContainerTask(
-        con, generateTask(std::experimental::randint(0, 4), con));
-    break;
-  case 2:
     result = new CountObjectsInContainerTask(con);
     break;
-  case 3:
+  case 2:
     result = new CountTasksWithResultTask(con);
     break;
   default:
     result = new CountObjectsTask();
     break;
   }
-
   return result;
 }
 
@@ -36,14 +31,13 @@ int main() {
   int n = 10;
   for (int i = 0; i < n; ++i) {
     conteiner->pushBack(
-        generateTask(std::experimental::randint(0, 4), conteiner));
+        generateTask(std::experimental::randint(0, 3), conteiner));
   }
-  std::cout<<Object::getObjectCount() << '\n';
   Container<Task *>::Iterator it = conteiner->first();
   for (;it != conteiner->last(); it++) {
     Task *t = conteiner->peekFront();
     t->execute();
-  }   
+  }
   conteiner->clear();
   std::cout<<Object::getObjectCount() << '\n';
   return 0;

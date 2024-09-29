@@ -43,7 +43,7 @@ TEST(Clear, Simple) {
   int n = 10;
   for (int i = 0; i < n; ++i) {
     conteiner->pushBack(
-        generateTask(std::experimental::randint(0, 4), conteiner));
+        generateTask(std::experimental::randint(0, 3), conteiner));
   }
   Container<Task *>::Iterator it = conteiner->first();
   for (;it != conteiner->last(); it++) {
