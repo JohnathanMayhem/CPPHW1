@@ -13,3 +13,12 @@ jobs:
           path: |
             build/main
             build/tests
+            
+  tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: binaries
+      - run: chmod +x tests && ./tests

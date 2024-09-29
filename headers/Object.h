@@ -1,8 +1,7 @@
 #include "Container.h"
 #include <map>
 #include <sstream>
-/*------------------------------------Abstract class
- * Object----------------------------------*/
+/*------------------------------------Abstract class Object----------------------------------*/
 
 class Object {
 private:
@@ -17,10 +16,10 @@ public:
 
   virtual std::string toString() const = 0;
 };
+
 uint64_t Object::objectCount = 0;
-// uint64_t Object::objectCount = 0;
-/*------------------------------------Abstract classs
- * Task------------------------------------*/
+
+/*------------------------------------Abstract classs Task-----------------------------------*/
 class Task : virtual public Object {
 public:
   Task(){};
@@ -29,8 +28,7 @@ public:
   virtual std::string toString() const = 0;
 };
 
-/*------------------------------------Abstract class
- * Named-----------------------------------*/
+/*------------------------------------Abstract class Named-----------------------------------*/
 class Named : virtual public Object {
 protected:
   std::string name;
@@ -54,8 +52,7 @@ public:
 
 enum BinaryOperator { ADD, SUB, MUL, DIV };
 
-/*------------------------------------Class
- * BinaryOperation----------------------------------*/
+/*------------------------------------Class BinaryOperation----------------------------------*/
 class BinaryOperation : public ResultTask, public Named {
 private:
   double left;
@@ -120,8 +117,7 @@ public:
   }
 };
 
-/*------------------------------------Class
- * СountObjectsInContainerTask----------------------------------*/
+/*------------------------------------Class СountObjectsInContainerTask----------------------*/
 class CountObjectsInContainerTask : public ResultTask {
 private:
   int result;
@@ -137,8 +133,7 @@ public:
   }
 };
 
-/*------------------------------------Class
- * AddToContainerTask--------------------------------*/
+/*------------------------------------Class AddToContainerTask-------------------------------*/
 class AddToContainerTask : public NoResultTask {
 private:
   Container<Task *> *container;
@@ -153,8 +148,7 @@ public:
   std::string toString() const override { return "Task added to container"; }
 };
 
-/*------------------------------------Class
- * CountTasksWithResultTask-------------------------*/
+/*------------------------------------Class CountTasksWithResultTask-------------------------*/
 class CountTasksWithResultTask : public ResultTask {
 private:
   const Container<Task *> *container;
@@ -179,8 +173,7 @@ public:
   }
 };
 
-/*----------------------------------Class
- * DeleteContainerTask--------------------------------*/
+/*----------------------------------Class DeleteContainerTask--------------------------------*/
 class DeleteContainerTask : public NoResultTask {
 private:
   Container<Task *> *container;
@@ -198,8 +191,7 @@ public:
   std::string toString() const override { return "Container has been cleaned"; }
 };
 
-/*-----------------------------------Class
- * CountObjectsTask----------------------------------*/
+/*-----------------------------------Class CountObjectsTask----------------------------------*/
 class CountObjectsTask : public ResultTask {
 private:
   uint64_t result;

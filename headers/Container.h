@@ -60,7 +60,7 @@ private:
   uint64_t length;
 };
 
-template <typename T> Container<T>::Container() {
+template <typename T> Container<T>::  Container() {
   this->length = 0;
   this->head = nullptr;
   this->end = nullptr;

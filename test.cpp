@@ -1,6 +1,7 @@
-#include "headers/Object.h"
+#include <gtest/gtest.h>
+
 #include <experimental/random>
-#include <iostream>
+#include "headers/Object.h"
 
 Task *generateTask(int n, Container<Task *> *con) {
   Task *result;
@@ -27,13 +28,12 @@ Task *generateTask(int n, Container<Task *> *con) {
     result = new CountObjectsTask();
     break;
   }
-
   return result;
 }
 
-int main() {
-  /*Container<Task *> *conteiner = new Container<Task *>();
-  int n = std::experimental::randint(15, 20);
+TEST(Add, Simple) {
+  Container<Task *> *conteiner = new Container<Task *>();
+  int n = 10;
   for (int i = 0; i < n; ++i) {
     conteiner->pushBack(
         generateTask(std::experimental::randint(0, 4), conteiner));
@@ -41,36 +41,8 @@ int main() {
   Container<std::string> *results = new Container<std::string>();
 
   std::cout << Object::getObjectCount() << '\n';
-  Task *t;
-  while (!conteiner->isEmpty()) {
-    t = conteiner->peekFront();
-    t->execute();
-    results->pushBack(t->toString());
-    conteiner->removeFront();
-    delete t;
-  }
-  uint64_t l = results->getLength();
-  for (uint64_t i = 0; i < l; ++i) {
-    std::cout << results->peekFront() << '\n';
-    results->removeFront();
-  }
-  results->clear();
-
-  std::cout << Object::getObjectCount() << '\n';*/
-  Task* t = new BinaryOperation(ADD, 10, 20, "Name1");
-  Task* t2 = new BinaryOperation(MUL, 20, 1, "Name2");
-  Task* count = new CountObjectsTask();
-  t->execute();
-  t2->execute();
-  count->execute();
-  std::cout<<count->toString();
-  delete t;
-  count->execute();
-  std::cout<<count->toString();
-  delete t2;
-  count->execute();
-  std::cout<<count->toString();
-  delete count;
-  std::cout<<Object::getObjectCount();
-  return 0;
+  EXPECT_EQ(Object::getObjectCount(), 10);
+  conteiner->clear();
+  EXPECT_EQ(Object::getObjectCount(), 0);
+  EXPECT_EQ(conteiner->isEmpty(), true);
 }
