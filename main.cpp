@@ -32,18 +32,19 @@ Task *generateTask(int n, Container<Task *> *con) {
 }
 
 int main() {
-  std::cout << Object::getObjectCount() << '\n';
-  Container<Task *> *c= new Container<Task *>();
-  Task* t = new BinaryOperation(ADD, 10, 20, "Name1");
-  c->pushBack(t);
-  Task* t2 = new BinaryOperation(MUL, 20, 1, "Name2");
-  c->pushBack(t2);
-  Task* count = new CountObjectsTask();
-  c->pushBack(count);
-  Task* add = new AddToContainerTask(c, t);
-  c->pushBack(add);
-  std::cout<<Object::getObjectCount() << '\n';
-  c->clear();
+  Container<Task *> *conteiner = new Container<Task *>();
+  int n = 10;
+  for (int i = 0; i < n; ++i) {
+    conteiner->pushBack(
+        generateTask(std::experimental::randint(0, 4), conteiner));
+  }
+  Container<Task *>::Iterator it = conteiner->first();
+  for (;it != conteiner->last(); it++) {
+    Task *t = conteiner->peekFront();
+    t->execute();
+  }
+      
+  conteiner->clear();
   std::cout<<Object::getObjectCount() << '\n';
   return 0;
 }

@@ -43,11 +43,16 @@ TEST(Add, Simple) {
 }
 
 TEST(Clear, Simple) {
-    Container<Task *> *conteiner = new Container<Task *>();
+  Container<Task *> *conteiner = new Container<Task *>();
   int n = 10;
   for (int i = 0; i < n; ++i) {
     conteiner->pushBack(
         generateTask(std::experimental::randint(0, 4), conteiner));
+  }
+  Container<Task *>::Iterator it = conteiner->first();
+  for (;it != conteiner->last(); it++) {
+    Task *t = conteiner->peekFront();
+    t->execute();
   }
   conteiner->clear();
   EXPECT_EQ(Object::getObjectCount(), 0);
@@ -59,6 +64,11 @@ TEST(AreEmpty, Simple) {
   for (int i = 0; i < n; ++i) {
     conteiner->pushBack(
         generateTask(std::experimental::randint(0, 4), conteiner));
+  }
+  Container<Task *>::Iterator it = conteiner->first();
+  for (;it != conteiner->last(); it++) {
+    Task *t = conteiner->peekFront();
+    t->execute();
   }
   conteiner->clear();
   EXPECT_EQ(conteiner->isEmpty(), true);
