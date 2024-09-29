@@ -13,7 +13,7 @@ jobs:
           path: |
             build/main
             build/tests
-            
+
   tests:
     needs: build
     runs-on: ubuntu-latest
@@ -22,3 +22,13 @@ jobs:
         with:
           name: binaries
       - run: chmod +x tests && ./tests
+  banchmark:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+       steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: binaries
+      - run: chmod +x my_banchmark && ./my_banchmark
+       
