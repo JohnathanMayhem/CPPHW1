@@ -22,6 +22,7 @@ jobs:
         with:
           name: binaries
       - run: chmod +x tests && ./tests
+      
   banchmark:
     needs: build
     runs-on: ubuntu-latest
