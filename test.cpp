@@ -34,8 +34,9 @@ TEST(Add, Simple) {
     conteiner->pushBack(
         generateTask(std::experimental::randint(0, 4), conteiner));
   }
-
+  
   EXPECT_EQ(conteiner->getLength(), 10);  
+  conteiner->clear();
 }
 
 TEST(Clear, Simple) {
