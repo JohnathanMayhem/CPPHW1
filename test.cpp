@@ -38,11 +38,28 @@ TEST(Add, Simple) {
     conteiner->pushBack(
         generateTask(std::experimental::randint(0, 4), conteiner));
   }
-  Container<std::string> *results = new Container<std::string>();
 
-  std::cout << Object::getObjectCount() << '\n';
-  EXPECT_EQ(Object::getObjectCount(), 10);
+  EXPECT_EQ(Object::getObjectCount(), 10);  
+}
+
+TEST(Clear, Simple) {
+    Container<Task *> *conteiner = new Container<Task *>();
+  int n = 10;
+  for (int i = 0; i < n; ++i) {
+    conteiner->pushBack(
+        generateTask(std::experimental::randint(0, 4), conteiner));
+  }
   conteiner->clear();
   EXPECT_EQ(Object::getObjectCount(), 0);
+}
+
+TEST(AreEmpty, Simple) {
+    Container<Task *> *conteiner = new Container<Task *>();
+  int n = 10;
+  for (int i = 0; i < n; ++i) {
+    conteiner->pushBack(
+        generateTask(std::experimental::randint(0, 4), conteiner));
+  }
+  conteiner->clear();
   EXPECT_EQ(conteiner->isEmpty(), true);
 }
