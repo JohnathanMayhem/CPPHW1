@@ -15,13 +15,9 @@ Task *generateTask(int n, Container<Task *> *con) {
     result = new BinaryOperation(op, unif(re), unif(re), "Name1");
     break;
   case 1:
-    result = new AddToContainerTask(
-        con, generateTask(std::experimental::randint(0, 4), con));
-    break;
-  case 2:
     result = new CountObjectsInContainerTask(con);
     break;
-  case 3:
+  case 2:
     result = new CountTasksWithResultTask(con);
     break;
   default:

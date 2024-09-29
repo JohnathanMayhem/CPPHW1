@@ -38,12 +38,12 @@ int main() {
     conteiner->pushBack(
         generateTask(std::experimental::randint(0, 4), conteiner));
   }
+  std::cout<<Object::getObjectCount() << '\n';
   Container<Task *>::Iterator it = conteiner->first();
   for (;it != conteiner->last(); it++) {
     Task *t = conteiner->peekFront();
     t->execute();
-  }
-      
+  }   
   conteiner->clear();
   std::cout<<Object::getObjectCount() << '\n';
   return 0;
