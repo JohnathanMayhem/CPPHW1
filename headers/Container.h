@@ -60,7 +60,7 @@ private:
   uint64_t length;
 };
 
-template <typename T> Container<T>::  Container() {
+template <typename T> Container<T>::Container() {
   this->length = 0;
   this->head = nullptr;
   this->end = nullptr;
@@ -124,6 +124,7 @@ template <typename T> void Container<T>::removeFront() {
   }
   if (!this->isEmpty()) {
     struct node *tmp = this->head->next;
+    delete this->head->val;
     delete this->head;
     this->head = tmp;
     if (this->head == nullptr)

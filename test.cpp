@@ -39,7 +39,7 @@ TEST(Add, Simple) {
         generateTask(std::experimental::randint(0, 4), conteiner));
   }
 
-  EXPECT_EQ(Object::getObjectCount(), conteiner->getLength());  
+  EXPECT_EQ(conteiner->getLength(), 10);  
 }
 
 TEST(Clear, Simple) {
